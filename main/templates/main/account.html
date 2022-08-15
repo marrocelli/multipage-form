@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block title %}My Account{% endblock %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'main/css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>My Account</h1>
+
+    {% if user.is_authenticated %}
+        <div class="container">
+            <h3>My Medical History</h3>
+            <hr>
+            {% for instance in data %}
+                {% for field, value in instance.fields.items %}
+                    {% if field != "user" %}
+                        <p>{{ field }}: {{ value}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

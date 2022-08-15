@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'main/css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        {% if user.is_authenticated %}
+            <p>Click <a href="/form">here</a> to fill out your medical history.</p>
+        {% else %}
+            <h1>Home Page</h1>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "main/base.html" %}
+
+{% block title %}Medical History Form{% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'main/css/form.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="heading">
+        <h1>Medical History Form</h1>
+    </div>
+
+    <section>
+        <div class="container mt-3">
+            <form id="mpform" method="POST" action="/form/">
+                {% csrf_token %}
+                
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+
+                    <div class="pbstep pbstep-active" data-title="Contact Info"></div>
+                    <div class="pbstep" data-title="Personal Details"></div>
+                    <div class="pbstep" data-title="Address"></div>
+                </div>
+                
+                <!-- Step 1 -->
+                <div class="step step-1 active mb-2">
+                    <h2>Contact Info</h2>
+                    <hr>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingFirstName" name="fname" placeholder="First Name">
+                        <label for="floatingFirstName">First Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingLastName" name="lname" placeholder="Last Name">
+                        <label for="floatingLastName">Last Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="Email">
+                        <label for="floatingEmail">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPhone" name="phone" placeholder="Phone Number">
+                        <label for="floatingPhone">Phone Number</label>
+                    </div>
+
+                    <button class="btn btn-outline-dark next-btn mt-2" type="button">Next</button>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step step-2 mb-2">
+                    <h2>Personal Details</h2>
+                    <hr>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingAge" name="age" placeholder="Age">
+                        <label for="floatingAge">Age</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingGender" name="gender" placeholder="Gender">
+                        <label for="floatingGender">Gender</label>
+                    </div>
+
+                    <button class="btn btn-outline-dark prev-btn mt-2" type="button">Prev</button>
+                    <button class="btn btn-outline-dark next-btn mt-2" type="button">Next</button>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step step-3 mb-2">
+                    <h2>Address</h2>
+                    <hr>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingAddress1" name="address1" placeholder="Address Line 1">
+                        <label for="floatingAddress1">Address Line 1</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingAddress2" name="address2" placeholder="Address Line 2">
+                        <label for="floatingAddress2">Address Line 2</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingCity" name="city" placeholder="City">
+                        <label for="floatingCity">City</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingZipCode" name="zipcode" placeholder="Zip Code">
+                        <label for="floatingZipCode">Zip Code</label>
+                    </div>
+
+                    <button class="btn btn-outline-dark prev-btn mt-2" type="button">Prev</button>
+                    <button class="btn btn-outline-success submit-btn mt-2" type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+    
+    
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'main/js/form.js' %}"></script>
+{% endblock %}
+
